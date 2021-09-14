@@ -1,0 +1,6 @@
+server:
+  port: 8983
+spring:
+  application:
+    name: API_VIDEOS
+
