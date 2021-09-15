@@ -2,4 +2,8 @@ server:
   port: 8981
 spring:
   application:
-    name: API_CATEGORY
+    name: API-CATEGORY
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.179.219:8848
