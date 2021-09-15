@@ -2,4 +2,9 @@ server:
   port: 8980
 spring:
   application:
-    name: API_ADMINS
+    name: API-ADMINS
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.179.219:8848
+

@@ -2,5 +2,8 @@ server:
   port: 8983
 spring:
   application:
-    name: API_VIDEOS
-
+    name: API-VIDEOS
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.179.219:8848

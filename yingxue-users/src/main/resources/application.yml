@@ -2,4 +2,8 @@ server:
   port: 8982
 spring:
   application:
-    name: API_USERS
+    name: API-USERS
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 47.99.179.219:8848
