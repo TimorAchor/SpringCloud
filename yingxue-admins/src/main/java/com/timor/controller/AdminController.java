@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -57,7 +58,9 @@ public class AdminController {
         Admin admin = (Admin) redisTemplate.opsForValue().get(token);
         AdminDTO adminDTO = new AdminDTO();
         //属性复制
-        BeanUtils.copyProperties(admin,adminDTO);
+        if(ObjectUtils.isEmpty(adminDTO)){
+            BeanUtils.copyProperties(admin,adminDTO);
+        }
         return adminDTO;
     }
 
