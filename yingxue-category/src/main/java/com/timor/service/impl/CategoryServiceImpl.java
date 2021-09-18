@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 分类(Category)表服务实现类
@@ -66,5 +67,16 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public boolean deleteById(Integer id) {
         return this.categoryDao.deleteById(id) > 0;
+    }
+
+
+    /**
+     * 查询一级目录
+     * @return
+     */
+    @Override
+    public List<Category> queryByFirstLevel() {
+
+        return categoryDao.queryByFirstLevel();
     }
 }

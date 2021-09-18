@@ -11,6 +11,32 @@
         <result property="deletedAt" column="deleted_at" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <resultMap type="com.timor.entity.Category" id="CategoriesMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <!--封装孩子-->
+        <collection property="children" javaType="list" ofType="com.timor.entity.Category">
+            <result property="id" column="cid" jdbcType="INTEGER"/>
+            <result property="name" column="cname" jdbcType="VARCHAR"/>
+            <result property="parentId" column="cparentId" jdbcType="INTEGER"/>
+        </collection>
+    </resultMap>
+
+    <select id="queryByFirstLevel" resultMap="CategoriesMap">
+        select
+          c.id,
+          c.name,
+          c1.id cid,
+          c1.name cname,
+          c1.parent_id cparentId
+        from category c
+        left join category c1
+        on c.id = c1.parent_id
+        where c.parent_id is null
+    </select>
+
+
+
     <!--查询单个-->
     <select id="queryById" resultMap="CategoryMap">
         select
@@ -101,6 +127,7 @@
     <delete id="deleteById">
         delete from category where id = #{id}
     </delete>
+
 
 </mapper>
 

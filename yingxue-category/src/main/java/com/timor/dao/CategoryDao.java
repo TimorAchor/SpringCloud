@@ -74,5 +74,10 @@ public interface CategoryDao {
      */
     int deleteById(Integer id);
 
+    /**
+     * 查询第一级目录
+     * @return
+     */
+    List<Category> queryByFirstLevel();
 }
 

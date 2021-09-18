@@ -1,7 +1,11 @@
 package com.timor.entity;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 分类(Category)实体类
@@ -9,6 +13,7 @@ import java.io.Serializable;
  * @author hlh
  * @since 2021-09-17 17:24:20
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)   //只要json中不为空的数据
 public class Category implements Serializable {
     private static final long serialVersionUID = 913770398719324955L;
     
@@ -20,6 +25,7 @@ public class Category implements Serializable {
     /**
      * 父级分类id
      */
+    @JsonProperty("parent_id")
     private Integer parentId;
     
     private Date createdAt;
@@ -28,6 +34,15 @@ public class Category implements Serializable {
     
     private Date deletedAt;
 
+    private List<Category> children;
+
+    public List<Category> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Category> children) {
+        this.children = children;
+    }
 
     public Integer getId() {
         return id;

@@ -2,6 +2,8 @@ package com.timor.service;
 
 import com.timor.entity.Category;
 
+import java.util.List;
+
 /**
  * 分类(Category)表服务接口
  *
@@ -44,4 +46,9 @@ public interface CategoryService {
      */
     boolean deleteById(Integer id);
 
+    /**
+     * 请求第一级目录
+     * @return
+     */
+    List<Category> queryByFirstLevel();
 }
