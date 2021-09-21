@@ -25,6 +25,30 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
+
+    /**
+     * 删除
+     * @param id
+     * @return
+     */
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id")Integer id){
+        log.info("更新的类别id:{}",id);
+        categoryService.deleteById(id);
+    }
+
+
+    /**
+     * 新增
+     * @param category
+     * @return
+     */
+    @PostMapping
+    public Category add(@RequestBody Category category){
+        log.info("更新的类别信息:{}", JSONUtils.writeJSON(category));
+        return categoryService.insert(category);
+    }
+
     /**
      * 修改类别列表
      * @return
