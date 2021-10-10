@@ -27,7 +27,7 @@ spring:
         - id: user_router
           uri: lb://API-USERS
           predicates:
-            - Path=/user/demos
+            - Path=/admin/user/**
           filters:
             - StripPrefix=1
         #video router
